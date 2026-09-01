@@ -6,7 +6,8 @@ public class ItemNotaFiscal{
         private double valorProduto;
         private String nomeProduto;
         private String un_medida;
-        private double ValorTotalProduto;
+        private String numeroProduto;
+        private double precoTotal;
 
         public ItemNotaFiscal(String nomeProduto, String quantidadeProduto, String codigo, String un_medida, String PrecoProduto){
                 this.nomeProduto = nomeProduto;
@@ -36,9 +37,12 @@ public class ItemNotaFiscal{
         public void valorProduto (double valordoProduto){ //
                 valorProduto = valordoProduto;
         }
+        public void numeroProduto (String contagemProduto){
+                numeroProduto = contagemProduto;
+        }
         
         public void ValorTotalProduto(double valorTotalProduto) { 
-                this.ValorTotalProduto = valorTotalProduto;       
+                this.precoTotal = valorTotalProduto;       
         }
         
         public String nomePorduto(){ // Get Nome Produto
@@ -60,9 +64,12 @@ public class ItemNotaFiscal{
         public Double valorProduto(){ // Get valor do Produto = 
                 return valorProduto;
         }
+        public String numeroProduto(){
+                return numeroProduto;
+        }
 
-        public Double valorTotalProduto(){
-                return valorTotalProduto();
+        public Double precoTotal(){
+                return precoTotal();
         }
               
         
