@@ -8,7 +8,7 @@ public class Main {
 
         Aluno aluno = new Aluno();
 
-        System.out.println("Nome:")
+        System.out.println("Nome:");
         aluno.setNome(entrada.nextLine());
     }
     
