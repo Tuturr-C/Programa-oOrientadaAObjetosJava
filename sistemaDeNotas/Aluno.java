@@ -4,7 +4,10 @@ public class Aluno {
 
     private String nome;
     private String ra;
-    private int[] nota;
+    private double[] notas = new double[2];
+    private double mediaAluno;
+
+    public Aluno (){}
 
 
     public void setNome(String nome){ // set nome
@@ -15,10 +18,13 @@ public class Aluno {
        this.ra = ra;
     }
 
-    public void setNota(int[] nota){
-        this.nota = nota;
+    public void setPrimeiraNota(double nota){
+        this.notas[0] = nota;
     }
 
+    public void setSegundaNota(double nota){
+        this.notas[1] = nota;
+    }
 
     public String getNome(){ //Get nome Aluno
         return nome;
@@ -28,11 +34,27 @@ public class Aluno {
         return ra;
     }
 
-    public int[] getNota(){
-        return nota;
+    public double[] getNotas(){
+        return notas;
+    }
+    public double mediaAluno(){
+        return mediaAluno;
     }
 
+    public Aluno( String nome, double primeiraNota, double segundaNota){ // Salva as duas notas para fazer a média
+        this.nome = nome;
+        this.notas[0] = primeiraNota;
+        this.notas[1] = segundaNota;
+    }
 
+    public double calcularMedia(){
+
+        this.mediaAluno = (this.notas[0]+this.notas[1])/2.0;
+        return this.mediaAluno;
+        
+    }
+
+    
 
 
 }

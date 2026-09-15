@@ -8,6 +8,7 @@ public class Diario {
     private int numeroDeNotas;
     private String adicionarAluno;
     private int numeroDaAtividade;
+    private String modificaAluno;
 
 
     public Diario(int[] numerosAluno){
@@ -19,9 +20,14 @@ public class Diario {
     }
 
 
-    public void adicionarAluno (String Aluno){ // Set adicionar Aluno
-        adicionarAluno = Aluno;
+    public void adicionarAluno (String aluno){ // Set adicionar Aluno
+        adicionarAluno = aluno;
     }
+
+    public void modificaAluno (String Aluno ){
+        modificaAluno = Aluno; 
+    }
+
 
     
 
