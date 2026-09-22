@@ -1,3 +1,3 @@
 # Programa-oOrientadaAObjetosJava
 
-Aqui eu irei colocar exercicios e projetos que eu estou fazendo sobre Programação Orientada a Objetos
+Aqui eu irei colocar exercicios e projetos que eu estou fazendo sobre Programação Orientada a Objetos da minha faculdade
