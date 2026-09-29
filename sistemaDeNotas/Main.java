@@ -4,18 +4,45 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static int lerInteiro(Scanner entrada, String mensagem) {
+        while (true) {
+            System.out.print(mensagem);
+
+            if (entrada.hasNextInt()) {
+                int valor = entrada.nextInt();
+                entrada.nextLine();
+                return valor;
+            } else {
+                entrada.next();
+                System.out.println("Digite um número inteiro válido.");
+            }
+        }
+    }
+
+    private static double lerNota(Scanner entrada, String mensagem) {
+        while (true) {
+            System.out.print(mensagem);
+
+            if (entrada.hasNextDouble()) {
+                double valor = entrada.nextDouble();
+                entrada.nextLine();
+                return valor;
+            } else {
+                entrada.next();
+                System.out.println("Digite uma nota válida.");
+            }
+        }
+    }
+
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
 
         System.out.print("Nome ou Numero da matéria: ");
         String nomeDaMateria = entrada.nextLine();
 
-        System.out.print("Quantidade de atividades: ");
-        int quantidadeDeAtividades = entrada.nextInt();
+        int quantidadeDeAtividades = lerInteiro(entrada, "Quantidade de atividades: ");
 
-        System.out.print("Quantidade de alunos: ");
-        int quantidadeDeAlunos = entrada.nextInt();
-        entrada.nextLine();
+        int quantidadeDeAlunos = lerInteiro(entrada, "Quantidade de alunos: ");
 
         ArrayList<Aluno> alunos = new ArrayList<>();
 
@@ -27,10 +54,8 @@ public class Main {
             aluno.setNome(entrada.nextLine());
 
             for (int atividade = 1; atividade <= quantidadeDeAtividades; atividade++) {
-                System.out.print("Nota da atividade " + atividade + ": ");
-                aluno.adicionarNota(entrada.nextDouble());
+                aluno.adicionarNota(lerNota(entrada, "Nota da atividade " + atividade + ": "));
             }
-            entrada.nextLine();
 
             alunos.add(aluno);
         }
@@ -40,8 +65,7 @@ public class Main {
             System.out.println("1 - Modificar nota");
             System.out.println("2 - Adicionar aluno");
             System.out.println("0 - Finalizar cadastro");
-            System.out.print("Escolha uma opção: ");
-            opcao = entrada.nextInt();
+            opcao = lerInteiro(entrada, "Escolha uma opção: ");
 
             if (opcao == 1) {
                 if (alunos.isEmpty()) {
@@ -53,8 +77,7 @@ public class Main {
                     System.out.println((i + 1) + " - " + alunos.get(i).getNome());
                 }
 
-                System.out.print("Número do aluno: ");
-                int numeroDoAluno = entrada.nextInt();
+                int numeroDoAluno = lerInteiro(entrada, "Número do aluno: ");
 
                 if (numeroDoAluno < 1 || numeroDoAluno > alunos.size()) {
                     System.out.println("Aluno inválido.");
@@ -62,32 +85,27 @@ public class Main {
                 }
 
                 Aluno aluno = alunos.get(numeroDoAluno - 1);
-                System.out.print("Qual atividade deseja modificar? (1 a "
-                        + quantidadeDeAtividades + "): ");
-                int numeroDaNota = entrada.nextInt();
+                int numeroDaNota = lerInteiro(entrada, "Qual atividade deseja modificar? (1 a "
+                    + quantidadeDeAtividades + "): ");
 
                 if (numeroDaNota < 1 || numeroDaNota > quantidadeDeAtividades) {
                     System.out.println("Atividade inválida.");
                     continue;
                 }
 
-                System.out.print("Digite o novo valor: ");
-                double novaNota = entrada.nextDouble();
+                double novaNota = lerNota(entrada, "Digite o novo valor: ");
                 aluno.modificarNota(numeroDaNota, novaNota);
 
                 System.out.println("Nota modificada com sucesso.");
             } else if (opcao == 2) {
-                entrada.nextLine();
                 Aluno novoAluno = new Aluno();
 
                 System.out.print("Nome: ");
                 novoAluno.setNome(entrada.nextLine());
 
                 for (int atividade = 1; atividade <= quantidadeDeAtividades; atividade++) {
-                    System.out.print("Nota da atividade " + atividade + ": ");
-                    novoAluno.adicionarNota(entrada.nextDouble());
+                    novoAluno.adicionarNota(lerNota(entrada, "Nota da atividade " + atividade + ": "));
                 }
-                entrada.nextLine();
 
                 alunos.add(novoAluno);
                 System.out.println("Aluno adicionado com sucesso.");
